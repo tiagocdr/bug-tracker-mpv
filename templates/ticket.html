@@ -1,0 +1,32 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+    
+    <div>
+        <h1>{{ticket.title}}, {{ticket.status}}</h1>
+        <p>{{ticket.description}}</p>
+        <p>Filled by:<a href="/user/{{ticket.user.id}}"> {{ticket.user}}</a></p>
+        <p>{{ticket.timestamp}}</p>
+        {% if ticket.status == 'in_progress' %}
+            <p>{{ticket.user_assigned}}</p>
+        {% elif ticket.status == 'done' %}
+            <p>{{ticket.completed_by}}</p>
+        {% endif %}
+        <button>
+            {% if ticket.status == 'new' %}
+            <a href="/status/{{ticket.id}}">
+                Assume
+            {% elif ticket.staus == 'in_progress' %}
+                Complete
+            </a>
+            {% endif %}
+        </button>
+        <a href="/">Home</a>
+        <!-- Make a symbol -->
+        <a href="/edit/{{ticket.id}}">Edit</a>
+        <a href="/edit/invalid/{{ticket.id}}">Mark as invalid</a>
+    </div>
+</body>

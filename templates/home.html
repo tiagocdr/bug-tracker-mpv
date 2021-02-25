@@ -1,0 +1,49 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<header>
+    <h1>Bug Tracking</h1>
+    <h2>Oh yes</h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/addticket/">New Ticket</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<body>
+    <div>
+        <h1>Pending Errors</h1>
+        {% for ticket in tickets %}
+            {% if ticket.status == 'new' %}
+                <p>{{ticket.title}}</p>
+                <p>{{ticket.description}}</p>
+                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div>
+        <h1>In Progress Errors</h1>
+        {% for ticket in tickets %}
+            {% if ticket.status == 'in_progress' %}
+                <p>{{ticket.title}}</p>
+                <p>{{ticket.description}}</p>
+                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div>
+        <h1>Completed Errors</h1>
+        {% for ticket in tickets %}
+            {% if ticket.status == 'done' %}
+                <p>{{ticket.title}}</p>
+                <p>{{ticket.description}}</p>
+                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>

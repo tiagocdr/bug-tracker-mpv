@@ -9,8 +9,18 @@ class TicketModel(models.Model):
     timestamp = models.TimeField(default=timezone.now)
     description = models.CharField(max_length=200)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-    user_assigned = models.ForeignKey(MyUser, null=True, on_delete=models.CASCADE, related_name='assigned')
-    completed_by = models.ForeignKey(MyUser, null=True, on_delete=models.CASCADE, related_name='completed')
+    user_assigned = models.ForeignKey(
+        MyUser,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name='assigned')
+    completed_by = models.ForeignKey(
+        MyUser,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name='completed')
     NEW = 'new'
     IN_PROGRESS = 'in_progress'
     DONE = 'done'
