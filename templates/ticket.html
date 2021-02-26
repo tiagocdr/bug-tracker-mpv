@@ -11,22 +11,28 @@
         <p>Filled by:<a href="/user/{{ticket.user.id}}"> {{ticket.user}}</a></p>
         <p>{{ticket.timestamp}}</p>
         {% if ticket.status == 'in_progress' %}
-            <p>{{ticket.user_assigned}}</p>
+            <p>Assigned to: <a href="/user/{{ticket.user.id}}">{{ticket.user_assigned}}</a></p>
         {% elif ticket.status == 'done' %}
-            <p>{{ticket.completed_by}}</p>
+            <p>Completed by :<a href="/user/{{ticket.user.id}}">{{ticket.completed_by}}</a></p>
         {% endif %}
         <button>
             {% if ticket.status == 'new' %}
             <a href="/status/{{ticket.id}}">
                 Assume
-            {% elif ticket.staus == 'in_progress' %}
-                Complete
+            </a>
+            {% elif ticket.status == 'in_progress' %}
+            <a href="/status/{{ticket.id}}">
+            Complete
+            </a>
+            {% else %}
+            <a href="/addticket/">
+            Submit new Ticket
             </a>
             {% endif %}
         </button>
         <a href="/">Home</a>
+        {% if ticket.status != 'invalid'%}
+        <a href="/invalid/{{ticket.id}}">Invalidate</a>
+        {% endif %}
         <!-- Make a symbol -->
-        <a href="/edit/{{ticket.id}}">Edit</a>
-        <a href="/edit/invalid/{{ticket.id}}">Mark as invalid</a>
-    </div>
-</body>
+        <a href="/edit/{{ticket.id}}">Edit</a> 

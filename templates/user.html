@@ -9,12 +9,13 @@
         <span><a href="/">home</a></span>
     </header>
     <div class='status'>
+        <h2>Filed Tickets</h2>
         {% for ticket in tickets %}
             {% if ticket.status == 'new' %}
             <div class="ticket">
-                <h2>
+                <h3>
                         {{ticket.title}}
-                </h2>
+                </h3>
                 <span>{{ticket.timestamp}}</span>
                 <p><a href="/ticket/{{ticket.id}}">Details</a></p>
             </div>
@@ -22,12 +23,13 @@
         {% endfor %}
     </div>
     <div class='status'>
+        <h2>In progress Tickets</h2>
         {% for ticket in tickets %}
             {% if ticket.status == 'in_progress' %}
             <div class="ticket">
-                <h2>
+                <h3>
                     {{ticket.title}}
-                </h2>
+                </h3>
                 <span>{{ticket.timestamp}}</span>
                 <p><a href="/ticket/{{ticket.id}}">Details</a></p>
             </div>
@@ -35,12 +37,13 @@
         {% endfor %}
     </div>
     <div class='status'>
+        <h2>Completed Tickets</h2>
         {% for ticket in tickets %}
             {% if ticket.status == 'done' %}
             <div class="ticket">
-                <h2>
+                <h3>
                     {{ticket.title}}
-                </h2>
+                </h3>
                 <span>{{ticket.timestamp}}</span>
                 <p><a href="/ticket/{{ticket.id}}">Details</a></p>
             </div>

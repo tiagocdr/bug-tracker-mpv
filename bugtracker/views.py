@@ -50,12 +50,22 @@ def change_status(request, ticket_id):
     ticket = TicketModel.objects.get(id=ticket_id)
     if ticket.status == 'new':
         ticket.status = 'in_progress'
+        ticket.user_assigned = request.user
     elif ticket.status == 'in_progress':
-        ticket.status == 'done'
+        ticket.status = 'done'
+        ticket.completed_by = ticket.user_assigned
+        ticket.user_assigned = None
     ticket.save()
     return redirect('ticket view', ticket_id=ticket.id)
 
+@login_required
+def invalid_ticket(request, ticket_id):
+    ticket = TicketModel.objects.get(id=ticket_id)
+    ticket.status = 'invalid'
+    ticket.save()
+    return redirect('ticket view', ticket_id=ticket.id)
 
+    
 @login_required
 def user_view(request, user_id):
     my_user = MyUser.objects.get(id=user_id)

@@ -16,13 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myuser.views import login_view
-from bugtracker.views import change_status, edit_ticket_view, home_view, ticket_view, add_ticket_view, user_view
+from bugtracker.views import change_status, edit_ticket_view, home_view, invalid_ticket, ticket_view, add_ticket_view, user_view
 urlpatterns = [
     path('', home_view, name='home'),
     path('ticket/<int:ticket_id>/', ticket_view, name='ticket view'),
     path('edit/<int:ticket_id>/', edit_ticket_view, name='edit ticket'),
     path('status/<int:ticket_id>/', change_status),
-    # path('status/<int:ticket_id>/', change_status),
+    path('invalid/<int:ticket_id>/', invalid_ticket),
     path('user/<int:user_id>/', user_view, name='user view'),
     path('addticket/', add_ticket_view, name='add ticket'),
     path('login/', login_view),

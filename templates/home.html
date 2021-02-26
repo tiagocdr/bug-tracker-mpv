@@ -46,4 +46,14 @@
             {% endif %}
         {% endfor %}
     </div>
+    <div>
+        <h1>Invalid Errors</h1>
+        {% for ticket in tickets %}
+            {% if ticket.status == 'invalid' %}
+                <p>{{ticket.title}}</p>
+                <p>{{ticket.description}}</p>
+                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+            {% endif %}
+        {% endfor %}
+    </div>
 </body>
