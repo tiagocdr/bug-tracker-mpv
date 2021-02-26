@@ -1,38 +1,34 @@
-{% load static %}
-<head>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-</head>
-<body>
-    
-    <div>
-        <h1>{{ticket.title}}, {{ticket.status}}</h1>
-        <p>{{ticket.description}}</p>
-        <p>Filled by:<a href="/user/{{ticket.user.id}}"> {{ticket.user}}</a></p>
-        <p>{{ticket.timestamp}}</p>
-        {% if ticket.status == 'in_progress' %}
+{% extends 'index.html' %}
+{% block content %}
+    <div class='body detail'>
+            <h1>{{ticket.title}}, {{ticket.status}}</h1>
+            <p>{{ticket.description}}</p>
+            <p>{{ticket.timestamp}}</p>
+            <p>Filled by:<a href="/user/{{ticket.user.id}}"> {{ticket.user}}</a></p>
+            {% if ticket.status == 'in_progress' %}
             <p>Assigned to: <a href="/user/{{ticket.user.id}}">{{ticket.user_assigned}}</a></p>
-        {% elif ticket.status == 'done' %}
+            {% elif ticket.status == 'done' %}
             <p>Completed by :<a href="/user/{{ticket.user.id}}">{{ticket.completed_by}}</a></p>
-        {% endif %}
-        <button>
-            {% if ticket.status == 'new' %}
-            <a href="/status/{{ticket.id}}">
-                Assume
-            </a>
-            {% elif ticket.status == 'in_progress' %}
-            <a href="/status/{{ticket.id}}">
-            Complete
-            </a>
-            {% else %}
-            <a href="/addticket/">
-            Submit new Ticket
-            </a>
             {% endif %}
-        </button>
-        <a href="/">Home</a>
-        {% if ticket.status != 'invalid'%}
-        <a href="/invalid/{{ticket.id}}">Invalidate</a>
-        {% endif %}
-        <!-- Make a symbol -->
-        <a href="/edit/{{ticket.id}}">Edit</a> 
+            <button>
+                {% if ticket.status == 'new' %}
+                <a href="/status/{{ticket.id}}">
+                    Assume
+                </a>
+                {% elif ticket.status == 'in_progress' %}
+                <a href="/status/{{ticket.id}}">
+                    Complete
+                </a>
+                {% else %}
+                <a href="/addticket/">
+                    Submit new Ticket
+                </a>
+                {% endif %}
+            </button>
+            {% if ticket.status != 'invalid'%}
+            <a href="/invalid/{{ticket.id}}">Invalidate</a>
+            {% endif %}
+            <!-- Make a symbol -->
+            <a href="/edit/{{ticket.id}}">Edit</a> 
+    </div>
+{% endblock %}
