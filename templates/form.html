@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+    <div class='forms'>
+        {% if request.user.is_authenticated %}
+        <h1>Report a bug</h1>
+        {% else %}
+        <h1>Welcome to the BugTracking system</h1>
+        <p>Please use staff info to log in, submit ticket for login issues.</p>
+        {% endif %}
+        <form action="" method="post">
+            {%  csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value = 'Share'>
+        </form>
+    </div>
+{% endblock %}

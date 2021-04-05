@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class = 'body'> 
+    <h2>{{user.username.title}}'s profile</h1>
+    <div class='category'>
+        <h2>Filed</h2>
+        {% for ticket in tickets %}
+        <div class="ticket">
+            <h3>
+                {{ticket.title}}
+            </h3>
+            <span>{{ticket.timestamp}}</span>
+            <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class='category'>
+        <h2>In progress</h2>
+        {% for ticket in tickets %}
+        {% if ticket.status == 'in_progress' %}
+        <div class="ticket">
+            <h3>
+                {{ticket.title}}
+            </h3>
+            <span>{{ticket.timestamp}}</span>
+            <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class='category'>
+        <h2>Completed</h2>
+        {% for ticket in tickets %}
+        {% if ticket.status == 'done' %}
+        <div class="ticket">
+            <h3>
+                {{ticket.title}}
+            </h3>
+            <span>{{ticket.timestamp}}</span>
+            <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+    {% endblock %}

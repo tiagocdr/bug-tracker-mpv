@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% block content %}
+    <div class ='body'> 
+        <div class ='category'>
+            <h2>Pending</h2>
+            {% for ticket in tickets %}
+            {% if ticket.status == 'new' %}
+            <div class="ticket">
+                <h4>{{ticket.title}}</h4>
+                <p>{{ticket.timestamp}}</p>
+                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class ='category'>
+            <h2>In Progress</h2>
+            {% for ticket in tickets %}
+            {% if ticket.status == 'in_progress' %}
+            <div class="ticket">
+                <h4>{{ticket.title}}</h4>
+                <p>{{ticket.timestamp}}</p>
+                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class ='category'>
+            <h2>Completed</h2>
+            {% for ticket in tickets %}
+            {% if ticket.status == 'done' %}
+            <div class="ticket">
+                <h4>{{ticket.title}}</h4>
+                <p>{{ticket.timestamp}}</p>
+                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class ='category'>
+            <h2>Invalid</h2>
+            {% for ticket in tickets %}
+            {% if ticket.status == 'invalid' %}
+            <div class="ticket">
+                <h4>{{ticket.title}}</h4>
+                <p>{{ticket.timestamp}}</p>
+                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
