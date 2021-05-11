@@ -123,3 +123,4 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'myuser.MyUser'
 LOGIN_URL = '/login/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
