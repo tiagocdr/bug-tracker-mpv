@@ -5,12 +5,12 @@
         <h1>Report a bug</h1>
         {% else %}
         <h1>Welcome to the BugTracking system</h1>
-        <p>Please use staff info to log in, submit ticket for login issues.</p>
         {% endif %}
         <form action="" method="post">
             {%  csrf_token %}
             {{ form.as_p }}
             <input type="submit" value = 'Share'>
         </form>
+        <p>Please use staff info to log in, submit ticket to satorocdm@outlook.com for login issues or trough dm <a href="https://www.linkedin.com/in/santiago-toro-1207941b4/" target="_blank">here</a>.</p>
     </div>
 {% endblock %}

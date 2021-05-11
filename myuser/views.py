@@ -1,7 +1,7 @@
 from django.contrib import auth
 from django.contrib.auth.backends import RemoteUserBackend
-from django.shortcuts import reverse, render, HttpResponseRedirect
-from django.contrib.auth import login, authenticate
+from django.shortcuts import redirect, reverse, render, HttpResponseRedirect
+from django.contrib.auth import login, authenticate, logout
 from myuser.form import LoginForm
 # Create your views here.
 
@@ -19,3 +19,8 @@ def login_view(request):
                 return HttpResponseRedirect(request.GET.get('next', reverse('home')))
     form = LoginForm()
     return render(request, 'form.html', {'form':form})
+
+    
+def logout_view(request):
+    logout(request)
+    return redirect('home')
