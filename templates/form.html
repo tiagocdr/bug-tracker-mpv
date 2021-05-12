@@ -10,7 +10,9 @@
             {%  csrf_token %}
             {{ form.as_p }}
             <input style ='margin-left: 3em' type="submit" value = 'Submit'>
+            {%if not request.user.is_authenticated%}
             <a style ='margin-left: 1em; 'href="/signup/">Sign up</a>
+            {%endif%}
         </form>
         <p>Please use staff info to log in, submit ticket to satorocdm@outlook.com for login issues or trough dm <a href="https://www.linkedin.com/in/santiago-toro-1207941b4/" target="_blank">here</a>.</p>
     </div>
