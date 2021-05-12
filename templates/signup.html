@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class='forms'>
+    <h1>Registration</h1>
+    <form action="" method="post">
+        {%  csrf_token %}
+        {{ form.as_p }}
+        <input style ='margin-left: 3em' type="submit" value = 'Sign Up'>
+        <p style ='margin-left: 3em; '>Already registered? <a href="/signup/">Log in</a>.</p>
+    </form>
+    <p>Please use staff info to log in, submit ticket to satorocdm@outlook.com for login issues or trough dm <a href="https://www.linkedin.com/in/santiago-toro-1207941b4/" target="_blank">here</a>.</p>
+</div>
+
+{% endblock %}

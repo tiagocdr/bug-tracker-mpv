@@ -3,7 +3,6 @@
     <div class ='body'> 
         <div class ='category'>
             <h2>Pending</h2>
-            {%if tickets%}
                 {% for ticket in tickets %}
                 {% if ticket.status == 'new' %}
                 <div class="ticket">
@@ -11,15 +10,11 @@
                     <p>{{ticket.timestamp}}</p>
                     <p><a href="/ticket/{{ticket.id}}">Details</a></p>
                 </div>
-                {%else%}
-            <p>Nothing in this section</p>
             {% endif %}
             {% endfor %}
-            {%endif%}
         </div>
         <div class ='category'>
             <h2>In Progress</h2>
-            {%if tickets%}
             {% for ticket in tickets %}
             {% if ticket.status == 'in_progress' %}
             <div class="ticket">
@@ -27,15 +22,11 @@
                 <p>{{ticket.timestamp}}</p>
                 <p><a href="/ticket/{{ticket.id}}">Details</a></p>
             </div>
-            {%else%}
-            <p>Nothing in this section</p>
             {% endif %}
             {% endfor %}
-            {%endif%}
         </div>
         <div class ='category'>
             <h2>Completed</h2>
-            {%if tickets%}
             {% for ticket in tickets %}
             {% if ticket.status == 'done' %}
             <div class="ticket">
@@ -43,15 +34,11 @@
                 <p>{{ticket.timestamp}}</p>
                 <p><a href="/ticket/{{ticket.id}}">Details</a></p>
             </div>
-            {%else%}
-            <p>Nothing in this section</p>
             {% endif %}
             {% endfor %}
-            {%endif%}
         </div>
         <div class ='category'>
             <h2>Invalid</h2>
-            {%if tickets%}
             {% for ticket in tickets %}
             {% if ticket.status == 'invalid' %}
             <div class="ticket">
@@ -59,11 +46,8 @@
                 <p>{{ticket.timestamp}}</p>
                 <p><a href="/ticket/{{ticket.id}}">Details</a></p>
             </div>
-            {%else%}
-            <p>Nothing in this section</p>
             {% endif %}
             {% endfor %}
-            {%endif%}
         </div>
     </div>
 {% endblock %}
