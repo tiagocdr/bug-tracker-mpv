@@ -1,3 +1,4 @@
+
 from django.contrib import auth
 from django.contrib.auth.backends import RemoteUserBackend
 from django.shortcuts import redirect, reverse, render, HttpResponseRedirect
