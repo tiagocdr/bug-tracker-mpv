@@ -1,15 +1,16 @@
+
 {% extends 'index.html' %}
 {% block content %}
     <div class ='body'> 
         <div class ='category'>
             <h2>Pending</h2>
-            {% for ticket in tickets %}
-            {% if ticket.status == 'new' %}
-            <div class="ticket">
-                <h4>{{ticket.title}}</h4>
-                <p>{{ticket.timestamp}}</p>
-                <p><a href="/ticket/{{ticket.id}}">Details</a></p>
-            </div>
+                {% for ticket in tickets %}
+                {% if ticket.status == 'new' %}
+                <div class="ticket">
+                    <h4>{{ticket.title}}</h4>
+                    <p>{{ticket.timestamp}}</p>
+                    <p><a href="/ticket/{{ticket.id}}">Details</a></p>
+                </div>
             {% endif %}
             {% endfor %}
         </div>

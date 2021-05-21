@@ -1,3 +1,4 @@
+
 #title  {   
     text-align: center;
 }
@@ -46,10 +47,11 @@ body {
     background-color: honeydew;
     box-shadow: 0 0 5px 0 rgb(150, 149, 149) ;
     white-space: nowrap;
+    margin: 10px;
 }
 
 .category h2 {
-    padding-bottom: 12px;
+    padding: 12px;
 }
 
 .ticket {   
@@ -62,7 +64,10 @@ body {
     background-color:white ;
     box-shadow: 0 0 5px 0 rgb(150, 149, 149) ;
     padding: 20px;
-    display: inline-block;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .forms h1 {
@@ -71,4 +76,14 @@ body {
 
 .forms form {   
     text-align: center;
+}
+
+.detail {  
+    background-color:white ;
+    box-shadow: 0 0 5px 0 rgb(150, 149, 149) ;
+    padding: 20px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
 }
